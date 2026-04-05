@@ -36,8 +36,8 @@ jobs:
         uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.KEY }}
+          username: ${{ secrets.HOST_USERNAME }}
+          key: ${{ secrets.PRIVATE_KEY }}
           script: |
             docker rm -f portfolio || echo "container not found skip removal"
             docker run -d --name portfolio -p 8080:80 ${{ secrets.DOCKER_USERNAME }}/portfolio-application-26:${{ github.run_number }}
